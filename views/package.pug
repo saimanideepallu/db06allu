@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{mode:"Express", price: 20.0, quantity: 550.0},{mode:"Prime Express", price: 90.0, quantity: 9000.0},{mode:"Normal", price: 5.0, quantity: 70.0}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each pack,i in results
+        div(class="col-sm-4 bg-info m-1 p-3" onclick=`buy(${i})`) #{pack.mode} - #{pack.price} - #{pack.quantity}
+  script.
+     
+      function buy(y)
+      {
+        alert(`You purchased Item ${y+1}`)
+      }
+  
