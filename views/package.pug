@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = [{mode:"Express", price: 20.0, quantity: 550.0},{mode:"Prime Express", price: 90.0, quantity: 9000.0},{mode:"Normal", price: 5.0, quantity: 70.0}]
+  - var package = results
   div(class="container-fluid mt-3")
   div(class="row")
     each pack,i in results

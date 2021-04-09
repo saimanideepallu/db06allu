@@ -1,9 +1,6 @@
 var express = require('express');
+const package_controlers= require('../controllers/package');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('package', { title: 'Package Search Results' });
-});
-
+/* GET costumes */
+router.get('/', package_controlers.package_view_all_Page );
 module.exports = router;
