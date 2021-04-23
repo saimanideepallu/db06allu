@@ -1,0 +1,26 @@
+extends layout
+
+block content
+   h1(id="newtitle")= title
+
+if (toShow == null)
+    h2 No instance to delete
+else
+  - let packageid = toShow._id
+  - let packagemode = toShow.mode
+  - let packageprice = toShow.price
+  - let packagequantity = toShow.quantity
+
+  div
+      div.row
+        div(class='costumeAttr mr-3') package ID is:
+        div(class='myvalues styles') #{packageid}
+      div.row
+        div(class='costumeAttr mr-3') package mode is:
+        div(class="myvalues") #{packagemode}
+      div.row
+        div(class='costumeAttr mr-3') package Price is:
+        div(class="myvalues") #{packageprice}
+      div.row
+        div(class='costumeAttr mr-3') package quantity is:
+        div(class="myvalues") #{packagequantity}

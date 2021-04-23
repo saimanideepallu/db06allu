@@ -1,20 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Working on  #{title} JS
-  
-  button(type="button", class="btn btn-success", onclick="update()") Press Me 
-  p 
-  div(id="target") Display
-  
-  script.
-    var client_count=0;
-    function update(){
-      client_count+=1;
-      
-      document.getElementById("target").innerHTML="Value Now "+client_count  ;
-    }
-  
-  p 
-  a(href="package") Go to Package
+ if (!user)
+  a(href="/login") Login
+  br
+  a(href="/register") Register
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/package") Go to the package Page
+  br
+  a(href="/logout") Logout

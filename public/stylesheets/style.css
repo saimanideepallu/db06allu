@@ -6,3 +6,51 @@ body {
 a {
   color: #00B7FF;
 }
+.costumeAttr {
+  background-color: blue;
+  width: 180px;
+  margin: 5px;
+  text-align: center;
+  color: yellow;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bolder;
+
+}
+
+.newAttr {
+  width: 180px;
+  margin: 5px;
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bolder;
+
+}
+
+#newtitle{
+  color: #179728;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+.myvalues{
+  margin-right: 4px;
+  margin-bottom: 0;
+  padding: 8px;
+  justify-content:center;
+  font-weight: bold;
+  border-bottom: 3px solid rgb(156, 89, 25);
+  border-left: 3px solid  rgb(196, 95, 28);
+  background-color: rgb(216, 22, 174);
+  border-radius: 3px;
+}
+.styles{
+    border-top: 3px solid brown;
+    width: 50%;
+}
+.newvalues:hover{
+  background-color: rgb(255, 176, 4);
+  color: red;
+}

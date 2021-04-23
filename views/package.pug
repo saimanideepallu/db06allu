@@ -1,16 +1,23 @@
 extends layout
 
 block content
+  - let create = `dispatch(\"package/create\")`
+  button.btn(class="btn-dark m1-1", onclick=create) Create
   h1= title
-  - var package = results
+  - let package=results;
   div(class="container-fluid mt-3")
-  div(class="row")
-    each pack,i in results
-        div(class="col-sm-4 bg-info m-1 p-3" onclick=`buy(${i})`) #{pack.mode} - #{pack.price} - #{pack.quantity}
-  script.
-     
-      function buy(y)
-      {
-        alert(`You purchased Item ${y+1}`)
+   div(class="row m-1")
+    each myitem in package
+     - let destination=`buy(\"/package/update?id=${myitem._id}\")`
+     - let detail=`buy(\"/package/detail?id=${myitem._id}\")`
+     - let del=`buy(\"/package/delete?id=${myitem._id}\")`
+     div(class="col-sm-6 bg-success m-1 p-3") package #{myitem.mode} - #{myitem.price} - #{myitem.quantity}
+      button.btn( class="btn-danger ml-2", onclick=destination ) Update
+      button.btn( class="btn-danger ml-2", onclick=detail ) Retrieve Detail
+      button.btn( class="btn-danger ml-2", onclick=del ) Delete
+  
+   script.
+    function buy(path){
+        window.location.href=path
       }
   

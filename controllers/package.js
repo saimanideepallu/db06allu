@@ -72,3 +72,70 @@ exports.package_view_all_Page = async function(req, res) {
         res.error(500,`{"error": ${err}}`);
     }
 };
+
+// Handle a show one view with id specified by query
+exports.package_view_one_Page = async function(req, res) {
+    console.log("single view for id "  + req.query.id)
+    try{
+        result = await package.findById( req.query.id)
+        res.render('packagedetail', { title: 'package Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle package delete on DELETE.
+exports.package_delete = async function(req, res) {
+    console.log("delete "  + req.params.id)
+    try {
+        result = await package.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
+};
+
+// Handle building the view for creating a package.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.package_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+        res.render('packagecreate', { title: 'package Create'});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{"error": Error creating ${err}}`);
+    }
+};
+
+// Handle building the view for updating a package.
+// query provides the id
+exports.package_update_Page =  async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+        let result = await package.findById(req.query.id)
+        res.render('packageupdate', { title: 'package Update', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle a delete one view with id from query
+exports.package_delete_Page = async function(req, res) {
+    console.log("Delete view for id "  + req.query.id)
+    try{
+        result = await package.findById(req.query.id)
+        res.render('packagedelete', { title: 'package Delete', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};

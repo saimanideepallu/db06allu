@@ -1,0 +1,55 @@
+extends layout
+
+block content
+    h1= title
+
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let packageid = toShow._id
+    - let packagemode = toShow.mode
+    - let packageprice = toShow.price
+    - let packagequantity = toShow.quantity
+    - let actionid = "/resource/package/" + packageid
+
+script let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='costumeAttr mr-3') package ID is:
+        div(class='newAttr') #{packageid}
+      div.row
+        div(class='costumeAttr mr-3') package mode is:
+        div(class='newAttr') #{packagemode}
+      div.row
+        div(class='costumeAttr mr-3') package Price is:
+        div(class='newAttr') #{packageprice}
+      div.row
+        div(class='costumeAttr mr-3') package quantity is:
+        div(class='newAttr') #{packagequantity}
+      
+
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+   script.
+    function cancel() {
+      // Go back to the home page for the costume collection
+      window.location.href='/package'
+    }
+  script.
+    function deleteOnid() {
+      console.log("Deleting the Resource")
+      // delete first
+      fetch(actionid, {
+        method: 'DELETE'      // Don't need a body for the delete
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/package'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+      });
+    } 
